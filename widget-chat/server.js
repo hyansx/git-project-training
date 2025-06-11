@@ -7,11 +7,12 @@ const app = express();
 // Configuração do CORS para permitir todas as origens
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+// Servir arquivos estáticos a partir da raiz do projeto
+app.use(express.static(path.join(__dirname, '..')));
 
-// Rota para a página principal
+// Rota para a página principal da landing page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Rota proxy para o webhook do n8n
